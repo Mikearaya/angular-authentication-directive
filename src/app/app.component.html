@@ -25,6 +25,27 @@
       </li>
     </ul>
   </div>
+
+  <div class="dropdown">
+    <button
+      class="btn btn-secondary dropdown-toggle"
+      type="button"
+      id="dropdownMenuButton"
+      data-toggle="dropdown"
+      aria-haspopup="true"
+      aria-expanded="false"
+    >
+      Change User
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <a class="dropdown-item" (click)="changeUserType('admin')" href="#"
+        >Change To Admin
+      </a>
+      <a class="dropdown-item" (click)="changeUserType('user')" href="#">
+        Change To User
+      </a>
+    </div>
+  </div>
 </nav>
 
 <router-outlet></router-outlet>
