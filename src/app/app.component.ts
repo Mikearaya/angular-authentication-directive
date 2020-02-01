@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { SecurityServiceService } from "./security-service.service";
 
 @Component({
   selector: "app-root",
@@ -6,7 +7,14 @@ import { Component } from "@angular/core";
   styleUrls: ["./app.component.css"]
 })
 export class AppComponent {
-  title = "angular-authentication";
+  securityObject;
 
-  changeUserType(state: string): void {}
+  constructor(private authenticationService: SecurityServiceService) {
+    this.securityObject = this.authenticationService.securityObject;
+  }
+  changeUserType(state: string): void {
+    this.authenticationService
+      .logIn(state)
+      .subscribe(data => (this.securityObject = data));
+  }
 }

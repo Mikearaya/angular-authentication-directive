@@ -7,7 +7,6 @@ export const userClaims = {
   ],
   userName: "User"
 };
-
 export const AdminClaims = {
   bearerToken: "",
   isAuthenticated: true,
@@ -16,4 +15,13 @@ export const AdminClaims = {
     { claimType: "canViewAdminSection", claimValue: "true" }
   ],
   userName: "Admin"
+};
+export const UnAuthenticatedUser = {
+  bearerToken: "",
+  isAuthenticated: true,
+  claims: [
+    { claimType: "canViewUserSection", claimValue: "false" },
+    { claimType: "canViewAdminSection", claimValue: "false" }
+  ],
+  userName: "UnAuthenticated"
 };
