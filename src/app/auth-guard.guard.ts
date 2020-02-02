@@ -30,8 +30,7 @@ export class AuthGuardGuard implements CanActivate {
     if (this.securityService.hasClaim(claimType)) {
       return true;
     } else {
-      alert("Unauthorized Returning User Back to Home Page");
-      this.router.navigate(["/"]);
+      this.router.navigate(["/unauthorized-user"]);
     }
 
     return true;

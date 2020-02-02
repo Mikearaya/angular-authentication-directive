@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Authentication Demonstration</a>
+  <a class="navbar-brand">Authentication Demonstration</a>
   <button
     class="navbar-toggler"
     type="button"
@@ -15,17 +15,19 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#" routerLink="/">Home </a>
+        <a class="nav-link" routerLink="/">Home </a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="#" routerLink="/admin">Admin </a>
+        <a class="nav-link" routerLink="/admin">Admin </a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="#" routerLink="/user">User </a>
+        <a class="nav-link" routerLink="/user">User </a>
       </li>
     </ul>
   </div>
-  Current User {{ securityObject.userName }}
+
+  Current User
+  <span class="text-success bg-black"> {{ securityObject.userName }}</span>
 
   <div class="dropdown">
     <button
@@ -39,10 +41,10 @@
       Change User
     </button>
     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-      <a class="dropdown-item" (click)="changeUserType('admin')" href="#"
+      <a class="dropdown-item" (click)="changeUserType('admin')"
         >Change To Admin
       </a>
-      <a class="dropdown-item" (click)="changeUserType('user')" href="#">
+      <a class="dropdown-item" (click)="changeUserType('user')">
         Change To User
       </a>
     </div>
@@ -51,12 +53,14 @@
 
 <router-outlet></router-outlet>
 
-<button type="button" class="btn btn-success" routerLink="/">
-  Got Home Page
-</button>
-<button type="button" class="btn btn-primary" routerLink="/admin">
-  Go To Admin
-</button>
-<button type="button" class="btn btn-secondary " routerLink="/user">
-  Go to User
-</button>
+<div class="d-flex justify-content-center mt-5">
+  <button type="button" class="btn btn-success m-2" routerLink="/">
+    Got Home Page
+  </button>
+  <button type="button" class="btn btn-primary m-2" routerLink="/admin">
+    Go To Admin
+  </button>
+  <button type="button" class="btn btn-secondary m-2" routerLink="/user">
+    Go to User
+  </button>
+</div>
