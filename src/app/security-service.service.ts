@@ -1,14 +1,24 @@
 import { Injectable } from "@angular/core";
 import { AppUserAuth } from "./auth.model";
 import { Observable, of } from "rxjs";
-import { AdminClaims, userClaims } from "./user-type.model";
+import {
+  AdminClaims,
+  userClaims,
+  UnAuthenticatedUser
+} from "./user-type.model";
 
 @Injectable({
   providedIn: "root"
 })
 export class SecurityServiceService {
   securityObject: AppUserAuth;
-  constructor() {}
+  constructor() {
+    if (localStorage.getItem("userClaims")) {
+      this.securityObject = JSON.parse(localStorage.getItem("userClaims"));
+    } else {
+      this.securityObject = UnAuthenticatedUser;
+    }
+  }
 
   logIn(user: string = ""): Observable<AppUserAuth> {
     let currentUser;
@@ -25,7 +35,7 @@ export class SecurityServiceService {
     return of<AppUserAuth>(currentUser);
   }
 
-  hasClaim(claimType: any, claimValue?: any): boolean {
+  hasClaim(claimType: any, claimValue?: any): Observable<boolean> {
     let ret = false;
 
     if (typeof claimType === "string") {
@@ -43,7 +53,7 @@ export class SecurityServiceService {
       }
     }
 
-    return ret;
+    return of<boolean>(ret);
   }
 
   private isClaimValid(claimType: string, claimValue?: string): boolean {

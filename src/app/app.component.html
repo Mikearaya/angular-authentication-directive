@@ -27,7 +27,7 @@
   </div>
 
   Current User
-  <span class="text-success bg-black"> {{ securityObject.userName }}</span>
+  <span class="text-success bg-black"> {{ securityObject?.userName }}</span>
 
   <div class="dropdown">
     <button
@@ -41,10 +41,17 @@
       Change User
     </button>
     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-      <a class="dropdown-item" (click)="changeUserType('admin')"
+      <a
+        class="dropdown-item"
+        hasClaim="'canViewAdminSection'"
+        (click)="changeUserType('admin')"
         >Change To Admin
       </a>
-      <a class="dropdown-item" (click)="changeUserType('user')">
+      <a
+        class="dropdown-item"
+        hasClaim="'canViewUserSection'"
+        (click)="changeUserType('user')"
+      >
         Change To User
       </a>
     </div>
